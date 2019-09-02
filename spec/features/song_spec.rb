@@ -5,6 +5,7 @@ describe 'navigate' do
     @artist = Artist.create(name: "My Artist", bio: "My artist bio")
     @genre = Genre.create(name: "My Genre")
     @song = Song.create(name: "My Song", artist_id: @artist.id, genre_id: @genre.id)
+    puts @song
   end
 
   it 'shows the name on the show page in a h1 tag' do
@@ -14,7 +15,7 @@ describe 'navigate' do
 
   it 'displays a link to the genre page' do 
     visit song_path(@song.id)
-
+    # binding.pry
     expect(page).to have_link(@genre.name, href: genre_path(@genre))
   end
 
